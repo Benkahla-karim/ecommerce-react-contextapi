@@ -1,25 +1,30 @@
-import logo from './logo.svg';
 import './App.css';
+import Slidebar from './components/Slidebar';
+import Home from './components/Home';
+import Bagslid from './components/Bagslid';
+import { useState } from 'react';
+import ContextProvider from './Context/bag-context';
+import { createContext } from 'react';
+import { BagContext } from './Context/bag-context';
 
 function App() {
+  const [BagItems,setBagItems] = useState([])
+  const [totalPrice,setTotalPrice] = useState(0)
+  
+   
+
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+    <BagContext.Provider value={{BagItems,setBagItems,totalPrice,setTotalPrice}} >
+        <Slidebar  />
+          <Home />
+          <Bagslid/>
+    </BagContext.Provider>
     </div>
   );
 }
 
 export default App;
+
